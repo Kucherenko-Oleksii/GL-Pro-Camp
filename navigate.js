@@ -1,6 +1,6 @@
 import  React from 'react';
-import Main from './components/Main';
-import Profile from './components/Profile';
+import Main from './src/components/Main';
+import Profile from './src/components/Profile';
 import {StyleSheet, Image, View} from 'react-native';
 
 import { NavigationContainer } from '@react-navigation/native';
@@ -10,20 +10,20 @@ const Stack = createStackNavigator();
 
 export default function Navigate() {
     return(  
-        <NavigationContainer>          
+        <NavigationContainer>    
         <Stack.Navigator>      
         <Stack.Screen
                 name="Main"
                 component = {Main}
-                options = {{title: '\t\t\t\t\t' + 'Fitness-Fox'}}
+                options = {{title: '\t\t\t\t\t\t' + 'Fitness-Fox'}}
             />            
             <Stack.Screen
                 name="Profile"
                 component = {Profile}
-                options = {{title: 'Profile'}}
+                optiopns ={{headerShown: false,}}      
             />
         </Stack.Navigator> 
-        <Image source = {require('./components/images/photo.jpg')} style = {styles.img}/>  
+        <Image source = {require('./src/components/images/photo.jpg')} style = {styles.img}/>  
     </NavigationContainer>
     );   
 }
