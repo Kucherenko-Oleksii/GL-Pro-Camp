@@ -15,7 +15,7 @@ export default function Navigate() {
         <Stack.Screen
                 name="Main"
                 component = {Main}
-                options = {{title: '\t\t\t\t\t' + 'Fitness-Fox'}}
+                options = {{title: 'Fitness-Fox'}}
             />            
             <Stack.Screen
                 name="Profile"
@@ -44,5 +44,11 @@ const styles = StyleSheet.create({
       left: -1,
       position: 'absolute',
       marginLeft: 1
+    },
+    titles:
+    {
+      alignItems: 'center',
+      alignContent: 'center',
+      justifyContent: 'center'
     }
 });
