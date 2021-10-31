@@ -1,10 +1,12 @@
 import  React from 'react';
 import Main from './components/Main';
 import Profile from './components/Profile';
+import SignUp from './components/SignUp';
 import {StyleSheet, Image, View} from 'react-native';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import SingUp from './components/SignUp';
 
 const Stack = createStackNavigator();
 
@@ -21,6 +23,11 @@ export default function Navigate() {
                 name="Profile"
                 component = {Profile}
                 options = {{title: 'Profile'}}
+            />
+            <Stack.Screen
+                name="SignUp"
+                component = {SingUp}
+                options = {{title: 'SignUp'}}
             />
         </Stack.Navigator> 
         <Image source = {require('./components/images/photo.jpg')} style = {styles.img}/>  

@@ -1,11 +1,14 @@
 import  React, { useState } from 'react';
-
+import Inputs from './Inputs';
 import { SafeAreaView , Image, StatusBar, TouchableOpacity, TextInput, ScrollView, Text, Button, StyleSheet, FlatList} from 'react-native';
-import Inputs from '../src/components/Inputs';
+
 export default function App({navigation}) {
      const loadScene = () => {
          navigation.navigate("Profile");
      }
+     const loadSceneSignUp = () => {
+        navigation.navigate("SignUp");
+    }
     return (    
       <SafeAreaView  style = {styles.container}>
          <ScrollView style={styles.scrollView}>
@@ -17,7 +20,7 @@ export default function App({navigation}) {
       <TouchableOpacity style = {styles.logbutton} onPress = {loadScene}  >       
            <Text style = {styles.texts}>LoGin</Text>            
         </TouchableOpacity>             
-        <TouchableOpacity style = {styles.signup} >       
+        <TouchableOpacity style = {styles.signup} onPress = {loadSceneSignUp}>       
            <Text style = {styles.texts}>SignUp</Text>            
         </TouchableOpacity> 
         <Text style = {styles.forgpass}>Forgot password?</Text>
@@ -82,20 +85,19 @@ export default function App({navigation}) {
     {
       color: 'white'
     },
-      
-      imageLogin:
-      {
-        width: 39,
-        height: 38,
-        top: 22,
-        left: 12
-      },
-      imagePassword:
-      {
+    imageLogin:
+    {
+      width: 39,
+      height: 38,
+      top: 22,
+      left: 12
+    },
+    imagePassword:
+    {
       width: 39,
       height: 45,
-      top: 25,
+      bottom: 83,
       left: 10
-      }   
+    }   
   }) 
   
