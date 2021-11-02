@@ -9,6 +9,9 @@ export default function App({navigation}) {
      const loadSceneSignUp = () => {
         navigation.navigate("SignUp");
     }
+    const loadForgotPass = () => {
+      navigation.navigate("Forgot password");
+    }
     return (    
       <SafeAreaView  style = {styles.container}>
          <ScrollView style={styles.scrollView}>
@@ -23,7 +26,7 @@ export default function App({navigation}) {
         <TouchableOpacity style = {styles.signup} onPress = {loadSceneSignUp}>       
            <Text style = {styles.texts}>SignUp</Text>            
         </TouchableOpacity> 
-        <Text style = {styles.forgpass}>Forgot password?</Text>
+        <Text style = {styles.forgpass} onPress = {loadForgotPass}>Forgot password?</Text>
        <StatusBar barStyle='dark-content'/> 
        </ScrollView>       
       </SafeAreaView >  

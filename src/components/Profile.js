@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { Text, View, StyleSheet, Alert } from 'react-native';
+import React, {useState} from 'react';
+import { Text, StyleSheet,  FlatList, Image } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { FontAwesome } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
@@ -8,9 +8,33 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 function Lists(){
-  return(
-    <SafeAreaView style = {styles.container}>
-      <Text style = {styles.text}>A later will be are lists of exercises performed</Text>
+  const [images, setimages] = useState([
+    {src:require('./images/exercises1.png')},
+    {src:require('./images/exercises2.png')},
+    {src:require('./images/exercises3.png')}
+  ]);
+  return(   
+    <SafeAreaView style = {styles.container}>  
+     <FlatList 
+     
+        horizontal = {true}
+        showsHorizontalScrollIndicator={true}
+        data={images}
+        renderItem={({item}) => (
+            <Image 
+                source={item.src}
+                style={{
+                    width:200,
+                    height:200,
+                    borderWidth:2,
+                    borderColor:'green',
+                    resizeMode:'contain',
+                    margin:8
+                }}
+            />
+        )}
+    />
+    
     </SafeAreaView>
   );
 }
@@ -26,8 +50,9 @@ function MyProfile() {
   return (
     <SafeAreaView style = {styles.container}> 
       <MaterialCommunityIcons name="selection-drag" size={70} color="black" />
-      <Text style = {styles.text}>There will be an opportunity able to download photos from your phone, 
-        as well view as some user characteristics, such as (Height, weight, etc.)</Text>
+      <Text style = {styles.text}>Age: 20</Text>
+      <Text style = {styles.text}>Weight: 78kg</Text>
+      <Text style = {styles.text}>Height: 1.82m</Text>
     </SafeAreaView>
   );
 }
@@ -86,7 +111,7 @@ const styles = StyleSheet.create({
   {
     color: 'black',
     fontSize: 17,
-    marginVertical: 28,
+    marginVertical: 10,
     marginRight: 15,
     marginLeft: 15,
     borderWidth: 2,
@@ -94,6 +119,30 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     paddingLeft: 15,
     paddingRight: 10,
-    paddingVertical: 15
-  }
+    paddingVertical: 10,
+    top: 60,
+    flexDirection: 'column',
+    marginTop: 10
+  },
+  imageexercises1:
+    {
+      width: 130,
+      height: 100,
+      bottom: '75%',
+      left: 5
+    },
+    imageexercises2:
+    {
+      width: 130,
+      height: 100,
+      bottom: 50,
+      left: 20
+    },
+    imageexercises3:
+    {
+      width: 130,
+      height: 100,
+      bottom: 70,
+      left: 30
+    }
 });
