@@ -7,6 +7,7 @@ import {StyleSheet, Image, View} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import SingUp from './components/SignUp';
+import Forgot_password from './components/Forgot_password';
 
 const Stack = createStackNavigator();
 
@@ -28,6 +29,11 @@ export default function Navigate() {
                 name="SignUp"
                 component = {SingUp}
                 options = {{title: 'SignUp'}}
+            />
+            <Stack.Screen
+                name="Forgot password"
+                component = {Forgot_password}
+                options = {{title: 'Forgot password'}}
             />
         </Stack.Navigator> 
         <Image source = {require('./components/images/photo.jpg')} style = {styles.img}/>  
