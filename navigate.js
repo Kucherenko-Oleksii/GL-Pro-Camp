@@ -1,29 +1,36 @@
 import  React from 'react';
 import Main from './src/components/Main';
 import Profile from './src/components/Profile';
+import SignUp from './src/components/SignUp';
 import {StyleSheet, Image, View} from 'react-native';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
+
 const Stack = createStackNavigator();
 
 export default function Navigate() {
     return(  
-        <NavigationContainer>    
+        <NavigationContainer>          
         <Stack.Navigator>      
         <Stack.Screen
                 name="Main"
                 component = {Main}
-                options = {{title: '\t\t\t\t\t\t' + 'Fitness-Fox'}}
+                options = {{title: 'Fitness-Fox'}}
             />            
             <Stack.Screen
                 name="Profile"
                 component = {Profile}
-                optiopns ={{headerShown: false,}}      
+                options = {{title: 'Profile'}}
+            />
+            <Stack.Screen
+                name="SignUp"
+                component = {SignUp}
+                options = {{title: 'SignUp'}}
             />
         </Stack.Navigator> 
-        <Image source = {require('./src/components/images/photo.jpg')} style = {styles.img}/>  
+        <Image source = {require('./components/images/photo.jpg')} style = {styles.img}/>  
     </NavigationContainer>
     );   
 }
@@ -44,5 +51,11 @@ const styles = StyleSheet.create({
       left: -1,
       position: 'absolute',
       marginLeft: 1
+    },
+    titles:
+    {
+      alignItems: 'center',
+      alignContent: 'center',
+      justifyContent: 'center'
     }
 });

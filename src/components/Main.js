@@ -1,40 +1,30 @@
 import  React, { useState } from 'react';
-
-import { SafeAreaView , Image, StatusBar, TouchableOpacity, TextInput, ScrollView, Text, StyleSheet} from 'react-native';
+import Inputs from './Inputs';
+import { SafeAreaView , Image, StatusBar, TouchableOpacity, TextInput, ScrollView, Text, Button, StyleSheet, FlatList} from 'react-native';
 
 export default function App({navigation}) {
      const loadScene = () => {
          navigation.navigate("Profile");
      }
+     const loadSceneSignUp = () => {
+        navigation.navigate("SignUp");
+    }
     return (    
       <SafeAreaView  style = {styles.container}>
          <ScrollView style={styles.scrollView}>
         <Text style = {styles.text} numberOfLines = {10}>Welcome to the Fitness-Fox! {'\n'}Application, given application was designed to help the user monitor their physical health.
               {'\n'}For further work, log in. if you are not registered yet, please register</Text>       
       <Image source = {require('./images/login_icon.png')} style = {styles.imageLogin}/>
-      <TextInput
-        style={styles.inputs}
-        placeholder = 'Login'     
-        placeholderTextColor = 'black'
-        selectionColor = 'black'
-        color = 'black'  
-      />   
-      <Image source={require('./images/pass_icon.png')} style = {styles.imagePassword}/>
-      <TextInput
-        style={styles.inputs}
-        placeholder='Password'
-        placeholderTextColor = 'black'
-        color = 'black'
-        secureTextEntry = {true}
-      /> 
+      <Inputs />
+      <Image source={require('./images/pass_icon.png')} style = {styles.imagePassword}/>    
       <TouchableOpacity style = {styles.logbutton} onPress = {loadScene}  >       
            <Text style = {styles.texts}>LoGin</Text>            
         </TouchableOpacity>             
-        <TouchableOpacity style = {styles.signup}>       
+        <TouchableOpacity style = {styles.signup} onPress = {loadSceneSignUp}>       
            <Text style = {styles.texts}>SignUp</Text>            
         </TouchableOpacity> 
         <Text style = {styles.forgpass}>Forgot password?</Text>
-       <StatusBar barStyle = 'dark-content'/> 
+       <StatusBar barStyle='dark-content'/> 
        </ScrollView>       
       </SafeAreaView >  
     );
@@ -95,27 +85,19 @@ export default function App({navigation}) {
     {
       color: 'white'
     },
-      inputs: {
-        height: 40,
-        margin: 12,
-        padding: 10,
-        borderWidth: 1,
-        borderColor: 'black',
-        paddingLeft: 45,
-        bottom: 30,       
-      },
-      imageLogin:
-      {
-        width: 39,
-        height: 38,
-        top: 22,
-        left: 12
-      },
-      imagePassword:
-      {
+    imageLogin:
+    {
+      width: 39,
+      height: 38,
+      top: 22,
+      left: 12
+    },
+    imagePassword:
+    {
       width: 39,
       height: 45,
-      top: 25,
+      bottom: 83,
       left: 10
-      }   
+    }   
   }) 
+  
