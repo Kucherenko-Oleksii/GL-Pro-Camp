@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
-import { Text, StyleSheet,  FlatList, Image, View, TouchableOpacity } from 'react-native';
+import { Text, StyleSheet,  FlatList, Image, View, TouchableOpacity, Alert } from 'react-native';
+import CheckBox from '@react-native-community/checkbox';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { FontAwesome } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
@@ -100,9 +101,50 @@ function MyProfile() {
   );
 }
 function SettingsScreen() {
+  const[isSelected, setSelection] = useState(false);
+  const[isSelected2, setSelection2] = useState(false);
+  const[isSelected3, setSelection3] = useState(false);
+
+  const Message = () => {
+    Alert.alert("Settings", "All settings are taken into account!")
+  }
+
   return (
     <SafeAreaView>
-      <Text style = {styles.text}>Will be different types of settings</Text>
+      <ScrollView>
+      <Text style = {styles.text}>Setting up exercises</Text>
+      <Text style={{alignSelf: 'flex-start',marginTop: '20%', fontSize: 20 }}> Increase the number of exercises </Text>
+      
+      <CheckBox 
+        value = {isSelected}
+        onValueChange = {setSelection}
+        style = {{  
+          alignSelf: 'flex-end',
+          bottom: '5%'
+        }}      
+      /> 
+      <Text style={{alignSelf: 'flex-start',marginTop: '21%', fontSize: 20 }}>Receive notifications about new exercises </Text>
+      <CheckBox 
+        value = {isSelected2}
+        onValueChange = {setSelection2}
+        style = {{  
+          alignSelf: 'flex-end',
+          bottom: '5%'
+        }}      
+      /> 
+      <Text style={{alignSelf: 'flex-start',marginTop: '22%', fontSize: 20 }}> Saving  your training results </Text>
+      <CheckBox 
+        value = {isSelected3}
+        onValueChange = {setSelection3}
+        style = {{  
+          alignSelf: 'flex-end',
+          bottom: '5%'
+        }}      
+      />
+      <TouchableOpacity style = {styles.Apply} onPress = {Message}> 
+         <Text style = {styles.buttonApply}>Apply</Text>
+      </TouchableOpacity>
+      </ScrollView>
     </SafeAreaView>
   );
 }
@@ -159,6 +201,22 @@ const styles = StyleSheet.create({
   {
    left: 7,
    top: 4
+  },
+  buttonApply:
+  {
+    color: 'white'
+  },
+  Apply:
+  {
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: 30,
+    width: '60%',     
+    marginBottom: 75,
+    borderRadius: 10,
+    marginLeft: 75,
+    top: 15,
+    backgroundColor: 'orange'
   },
   accept:
   {
