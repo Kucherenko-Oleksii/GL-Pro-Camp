@@ -43,8 +43,7 @@ const styles = StyleSheet.create({
         borderColor: 'black',
         paddingLeft: 10,
         top: 50,       
-      },
-    
+      },  
     text:
     {     
         fontSize: 40,     

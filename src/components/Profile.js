@@ -1,11 +1,12 @@
 import React, {useState} from 'react';
-import { Text, StyleSheet,  FlatList, Image } from 'react-native';
+import { Text, StyleSheet,  FlatList, Image, View, TouchableOpacity } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { FontAwesome } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { ScrollView } from 'react-native-gesture-handler';
 
 function Lists(){
   const [images, setimages] = useState([
@@ -15,22 +16,15 @@ function Lists(){
   ]);
   return(   
     <SafeAreaView style = {styles.container}>  
+      <Text style = {styles.text}>Exercises that are completed</Text>
      <FlatList 
-     
         horizontal = {true}
         showsHorizontalScrollIndicator={true}
         data={images}
         renderItem={({item}) => (
             <Image 
                 source={item.src}
-                style={{
-                    width:200,
-                    height:200,
-                    borderWidth:2,
-                    borderColor:'green',
-                    resizeMode:'contain',
-                    margin:8
-                }}
+                style={styles.imagestyle}
             />
         )}
     />
@@ -39,9 +33,58 @@ function Lists(){
   );
 }
 function Exercises(){
+
+
+  const [images, setimages] = useState([
+    {src:require('./images/today1.png')},
+    {src:require('./images/today2.png')},
+    {src:require('./images/today3.png')},
+    {src:require('./images/today4.png')},
+    {src:require('./images/today5.png')}
+  ]);
+
+  const deleteExercise = () => {
+    delete(require('./images/today5.png'))
+
+  }
+
+    
+  const[accepted, setAccepted] = useState(false)
+  const loadAccept = () => {
+  
+  }
   return(
     <SafeAreaView style = {styles.container}>
-      <Text style = {styles.text}>In the future, there will be a list of exercises that need to be performed today</Text>
+      <View style = {styles.view}>
+        <Text style = {styles.text}>Exercises to do today</Text>
+      </View>
+      <FlatList 
+        horizontal = {true}
+        showsHorizontalScrollIndicator={true}
+        data={images}
+        renderItem={({item}) => (
+            <Image 
+                source={item.src}
+                style={{
+                  width:200,
+                  height:200,
+                  borderWidth:2,                    
+                  borderColor: accepted ? 'blue' : 'red' ,
+                  resizeMode:'contain',
+                  margin:10,
+                  top: '22%'
+                }}
+            />
+        )}
+      />
+      <TouchableOpacity style = {styles.accept}>       
+           <Text style = {styles.textButton} onPress = {loadAccept}>Accept on exercises</Text>            
+        </TouchableOpacity> 
+
+        <TouchableOpacity style = {styles.cancel}>       
+           <Text style = {styles.textButton} onPress = {deleteExercise}>Cancel exercises</Text>            
+        </TouchableOpacity> 
+        <ScrollView /> 
     </SafeAreaView>
     
   );
@@ -91,7 +134,7 @@ function MyTabs() {
       <Tab.Screen name="My Profile" component={MyProfile} />
       <Tab.Screen name="List of completed exercises" component={Lists} options={{ tabBarBadge: 3 }} />
       <Tab.Screen name="Exercises for today" component={Exercises}  options={{ tabBarBadge: 5 }} />
-      <Tab.Screen name="Settings" component={SettingsScreen}  options={{ tabBarBadge: 1 }} />     
+      <Tab.Screen name="Settings" component={SettingsScreen}  options={{ tabBarBadge: 1 }} />    
     </Tab.Navigator>
   );
 }
@@ -107,6 +150,36 @@ const styles = StyleSheet.create({
   {
     flex:1
   },
+  view:
+  {
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  textButton:
+  {
+   left: 7,
+   top: 4
+  },
+  accept:
+  {
+    height: 30,
+    width: '40%',     
+    marginBottom: 15,
+    borderRadius: 10,
+    marginRight: '20%',
+    top: '11.5%',
+    backgroundColor: 'lightgreen' 
+  },
+  cancel:
+  {
+    height: 30,
+    width: '33%',     
+    marginBottom: 15,
+    borderRadius: 10,
+    marginLeft: '64%',
+    top: '2%',
+    backgroundColor: 'tomato' 
+  },
   text:
   {
     color: 'black',
@@ -120,29 +193,18 @@ const styles = StyleSheet.create({
     paddingLeft: 15,
     paddingRight: 10,
     paddingVertical: 10,
-    top: 60,
+    top: 40,
     flexDirection: 'column',
-    marginTop: 10
+    marginTop: 10,
   },
-  imageexercises1:
+    imagestyle:
     {
-      width: 130,
-      height: 100,
-      bottom: '75%',
-      left: 5
-    },
-    imageexercises2:
-    {
-      width: 130,
-      height: 100,
-      bottom: 50,
-      left: 20
-    },
-    imageexercises3:
-    {
-      width: 130,
-      height: 100,
-      bottom: 70,
-      left: 30
+      width:200,
+      height:200,
+      borderWidth:2,
+      borderColor:'green',
+      resizeMode:'contain',
+      margin:10,
+      top: '35%'
     }
 });
